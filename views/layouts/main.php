@@ -34,80 +34,78 @@ AppAsset::register($this);
 <div id="page">
 
 <!-- Header section -->
-		<nav class="colorlib-nav" role="navigation">
-			<div class="top-menu">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="<?= Url::toRoute('site/index', 'https') ?>">Store</a></div>
-						</div>
-						<div class="col-xs-10 text-right menu-1">
-							<ul>
-								<li class="active"><a href="<?= Url::toRoute('site/index', 'https') ?>">Home</a></li>
-								<li class="has-dropdown">
-									<a href="shop.html">Shop</a>
-									<ul class="dropdown">
-										<li><a href="product-detail.html">Product Detail</a></li>
-										<li><a href="cart.html">Shipping Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
-										<li><a href="order-complete.html">Order Complete</a></li>
-										<li><a href="add-to-wishlist.html">Wishlist</a></li>
-									</ul>
-								</li>
-								<li><a href="<?= Url::toRoute('site/index', 'https') ?>">Blog</a></li>
-								<li><a href="<?= Url::toRoute('site/about', 'https') ?>">About</a></li>
-								<li><a href="<?= Url::toRoute('site/contact', 'https') ?>">Contact</a></li>
-								<li><a href="<?= Url::toRoute('site/index', 'https') ?>"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-							</ul>
-						</div>
+	<nav class="colorlib-nav" role="navigation">
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2">
+						<div id="colorlib-logo"><a href="<?= Url::toRoute('site/index', 'https') ?>">Store</a></div>
+					</div>
+					<div class="col-xs-10 text-right menu-1">
+						<ul>
+							<li class="active"><a href="<?= Url::toRoute('site/index', 'https') ?>">Home</a></li>
+							<li class="has-dropdown">
+								<a href="<?= Url::toRoute('shop/index', 'https') ?>">Shop</a>
+								<ul class="dropdown">
+									<li><a href="<?= Url::toRoute('shop/authors', 'https') ?>">Authors</a></li>
+									<!--<li><a href="<?= Url::toRoute('shop/publishing-houses', 'https') ?>">Publishing Houses</a></li>-->
+									<!--<li><a href="<?= Url::toRoute('shop/books', 'https') ?>">Books</a></li>-->
+									<!--<li><a href="<?= Url::toRoute('shop/rubrics', 'https') ?>">Rubrics</a></li>-->
+								</ul>
+							</li>
+							<li><a href="<?= Url::toRoute('site/index', 'https') ?>">Blog</a></li>
+							<li><a href="<?= Url::toRoute('site/about', 'https') ?>">About</a></li>
+							<li><a href="<?= Url::toRoute('site/contact', 'https') ?>">Contact</a></li>
+							<li><a href="<?= Url::toRoute('site/index', 'https') ?>"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</nav>
+		</div>
+	</nav>
 <!-- Header section end --> 
 
-
-    <?php
-    /*
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    */
-    ?>
-
     <div class="container">
-        <?= Breadcrumbs::widget([
+        <?php
+    		if (isset($this->params['breadcrumbs']))
+        	{
+        		echo $this->render('_breadcrumbs');
+        	}
+        /*
+        echo Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+        ]) 
+        */
+        ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 
+</div>
+
+<div id="colorlib-subscribe">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-6 text-center">
+					<h2><i class="icon-paperplane"></i>Sign Up for a Newsletter</h2>
+				</div>
+				<div class="col-md-6">
+					<form class="form-inline qbstp-header-subscribe">
+						<div class="row">
+							<div class="col-md-12 col-md-offset-0">
+								<div class="form-group">
+									<input type="text" class="form-control" id="email" placeholder="Enter your email">
+									<button type="submit" class="btn btn-primary">Subscribe</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Footer section -->
@@ -130,7 +128,7 @@ AppAsset::register($this);
 				<h4>Customer Care</h4>
 				<p>
 					<ul class="colorlib-footer-links">
-						<li><a href="#">Contact</a></li>
+						<li><a href="<?= Url::toRoute('site/contact', 'https') ?>">Contact</a></li>
 						<li><a href="#">Returns/Exchange</a></li>
 						<li><a href="#">Gift Voucher</a></li>
 						<li><a href="#">Wishlist</a></li>
@@ -144,7 +142,7 @@ AppAsset::register($this);
 				<h4>Information</h4>
 				<p>
 					<ul class="colorlib-footer-links">
-						<li><a href="#">About us</a></li>
+						<li><a href="<?= Url::toRoute('site/about', 'https') ?>">About us</a></li>
 						<li><a href="#">Delivery Information</a></li>
 						<li><a href="#">Privacy Policy</a></li>
 						<li><a href="#">Support</a></li>
@@ -156,7 +154,7 @@ AppAsset::register($this);
 			<div class="col-md-2">
 				<h4>News</h4>
 				<ul class="colorlib-footer-links">
-					<li><a href="blog.html">Blog</a></li>
+					<li><a href="<?= Url::toRoute('site/index', 'https') ?>">Blog</a></li>
 					<li><a href="#">Press</a></li>
 					<li><a href="#">Exhibitions</a></li>
 				</ul>

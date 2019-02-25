@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Authors;
 
 /**
  * This is the model class for table "books".
@@ -49,5 +50,10 @@ class Book extends \yii\db\ActiveRecord
             'rubric_id' => 'Rubric ID',
             'published_date' => 'Published Date',
         ];
+    }
+    
+    public function getAuthor()
+    {
+        return $this->hasOne(Authors::className(), ['id' => 'author_id']);
     }
 }

@@ -23,7 +23,7 @@ class AppAsset extends AssetBundle
         'css/site.css',        
         'css/animate.css',
         'css/icomoon.css',
-        'css/bootstrap.css',
+        // 'css/bootstrap.css',
         'css/magnific-popup.css',
         'css/flexslider.css',
         'css/owl.carousel.min.css',
@@ -48,5 +48,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

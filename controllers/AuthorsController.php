@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Authors;
+use app\models\Book;
 use app\models\search\AuthorsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -124,4 +125,5 @@ class AuthorsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }
